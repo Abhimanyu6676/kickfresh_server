@@ -1,0 +1,46 @@
+[
+  {
+    "SubCategories/7": "C1-SB8",
+    "CategoryName": "C1",
+    "SubCategories/0": "C1-SB1",
+    "SubCategories/1": "C1-SB2",
+    "SubCategories/2": "C1-SB3",
+    "SubCategories/3": "C1-SB4",
+    "SubCategories/4": "C1-SB5",
+    "SubCategories/5": "C1-SB6",
+    "SubCategories/6": "C1-SB7"
+  },
+  {
+    "SubCategories/7": "C2-SB8",
+    "CategoryName": "C2",
+    "SubCategories/0": "C2-SB1",
+    "SubCategories/1": "C2-SB2",
+    "SubCategories/2": "C2-SB3",
+    "SubCategories/3": "C2-SB4",
+    "SubCategories/4": "C2-SB5",
+    "SubCategories/5": "C2-SB6",
+    "SubCategories/6": "C2-SB7"
+  },
+  {
+    "SubCategories/7": "C3-SB8",
+    "CategoryName": "C3",
+    "SubCategories/0": "C3-SB1",
+    "SubCategories/1": "C3-SB2",
+    "SubCategories/2": "C3-SB3",
+    "SubCategories/3": "C3-SB4",
+    "SubCategories/4": "C3-SB5",
+    "SubCategories/5": "C3-SB6",
+    "SubCategories/6": "C3-SB7"
+  },
+  {
+    "SubCategories/7": "C4-SB8",
+    "CategoryName": "C4",
+    "SubCategories/0": "C4-SB1",
+    "SubCategories/1": "C4-SB2",
+    "SubCategories/2": "C4-SB3",
+    "SubCategories/3": "C4-SB4",
+    "SubCategories/4": "C4-SB5",
+    "SubCategories/5": "C4-SB6",
+    "SubCategories/6": "C4-SB7"
+  }
+]
