@@ -15,7 +15,8 @@
     "_dev": "npx nodemon server",
     "build": "cross-env NODE_ENV=production keystone build",
     "start": "cross-env NODE_ENV=production keystone start",
-    "server": "cross-env NODE_ENV=production DISABLE_LOGGING=true npx nodemon server.js",
+    "server_pro": "cross-env NODE_ENV=production DISABLE_LOGGING=true npx nodemon server.js",
+    "server_dev": "cross-env NODE_ENV=development DISABLE_LOGGING=true npx nodemon server.js",
     "create-tables": "keystone create-tables"
   },
   "dependencies": {
