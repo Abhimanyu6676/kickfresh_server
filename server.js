@@ -4,7 +4,7 @@ const { keystone, apps } = require("./index.js");
 keystone
   .prepare({
     apps: apps,
-    dev: process.env.NODE_ENV !== "production"
+    dev: process.env.NODE_ENV !== "production",
   })
   .then(async ({ middlewares }) => {
     await keystone.connect();
@@ -22,5 +22,5 @@ keystone
         next();
       }
     }); */
-    app.use(middlewares).listen(3000);
+    app.use(middlewares).listen(80);
   });
