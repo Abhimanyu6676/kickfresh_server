@@ -1,4 +1,10 @@
-const { Text, Password, Checkbox, Select } = require("@keystonejs/fields");
+const {
+  Text,
+  Password,
+  Checkbox,
+  Select,
+  Relationship
+} = require("@keystonejs/fields");
 
 module.exports = {
   /* access: {
@@ -19,6 +25,12 @@ module.exports = {
       type: Text,
       isUnique: true,
       isRequired: true
+    },
+    FName: {
+      type: Text
+    },
+    LName: {
+      type: Text
     },
     email: {
       type: Text
@@ -41,10 +53,19 @@ module.exports = {
       } */
     },
     isAdmin: { type: Checkbox, defaultValue: false },
+    Address: {
+      type: Text,
+      many: true
+    },
     state: {
       type: Select,
       options: ["active", "deactivated"],
       defaultValue: "active"
+    },
+    Cart: {
+      type: Relationship,
+      many: true,
+      ref: "Cart.User"
     }
   },
   labelField: "username"

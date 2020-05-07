@@ -27,6 +27,7 @@
     "@keystonejs/auth-password": "^5.1.5",
     "@keystonejs/fields": "^9.0.0",
     "@keystonejs/keystone": "^8.0.0",
+    "cookie-parser": "^1.4.5",
     "cross-env": "^7.0.0",
     "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1"

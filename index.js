@@ -3,29 +3,30 @@ const { GraphQLApp } = require("@keystonejs/app-graphql");
 const { AdminUIApp } = require("@keystonejs/app-admin-ui");
 const { StaticApp } = require("@keystonejs/app-static");
 const { PasswordAuthStrategy } = require("@keystonejs/auth-password");
-//-->Lists
+//::Lists
 const ProductSchema = require("./lists/Product.js");
 const UserSchema = require("./lists/User.js");
+const CartSchema = require("./lists/Cart.js");
 const AreaSchema = require("./lists/Area.js");
 const VendorSchema = require("./lists/Vendor.js");
 const LandmarkSchema = require("./lists/Landmark.js");
 const CategorySchema = require("./lists/Category.js");
 const SubCategorySchema = require("./lists/SubCategory.js");
 const SubSubCategorySchema = require("./lists/SubSubCategory.js");
-//-->Custom Express App
+//::Custom Express App
 const { Express } = require("./Express.js");
 
 const { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
 
 const PROJECT_NAME = "Kickfresh_Server";
 const adapterConfig = {
-  mongoUri: "mongodb://localhost:27017/kickfresh",
+  mongoUri: "mongodb://localhost:27017/kickfresh"
 };
 
 const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(adapterConfig),
-  onConnect: async (keystone) => {
+  onConnect: async keystone => {
     let seed = false;
     {
       seed &&
@@ -35,27 +36,27 @@ const keystone = new Keystone({
             { Landmark: "LOGIX" },
             { Landmark: "ATS" },
             { Landmark: "LOTUS" },
-            { Landmark: "GAUR" },
+            { Landmark: "GAUR" }
           ],
           Area: [
             {
               AreaCode: 201501,
               Landmark: [
                 { where: { Landmark: "PARAS" } },
-                { where: { Landmark: "LOGIX" } },
-              ],
+                { where: { Landmark: "LOGIX" } }
+              ]
             },
             {
               AreaCode: 201502,
-              Landmark: [{ where: { Landmark: "ATS" } }],
+              Landmark: [{ where: { Landmark: "ATS" } }]
             },
             {
               AreaCode: 201503,
               Landmark: [
                 { where: { Landmark: "LOTUS" } },
-                { where: { Landmark: "GAUR" } },
-              ],
-            },
+                { where: { Landmark: "GAUR" } }
+              ]
+            }
           ],
           Vendor: [
             {
@@ -63,18 +64,18 @@ const keystone = new Keystone({
               VendorCode: 001,
               AreaCode: [
                 { where: { AreaCode: 201501 } },
-                { where: { AreaCode: 201502 } },
-              ],
+                { where: { AreaCode: 201502 } }
+              ]
             },
             {
               Name: "Shiva",
               VendorCode: 002,
-              AreaCode: [{ where: { AreaCode: 201503 } }],
-            },
-          ],
+              AreaCode: [{ where: { AreaCode: 201503 } }]
+            }
+          ]
         }));
     }
-  },
+  }
 });
 
 keystone.createList("Category", CategorySchema);
@@ -85,27 +86,34 @@ keystone.createList("Area", AreaSchema);
 keystone.createList("Product", ProductSchema);
 keystone.createList("Vendor", VendorSchema);
 keystone.createList("User", UserSchema);
+keystone.createList("Cart", CartSchema);
 
-/* const authStrategy = keystone.createAuthStrategy({
+const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
   list: "User",
   config: {
     identityField: "username", // default: 'email'
     secretField: "password" // default: 'password'
   }
-}); */
+});
 
 module.exports = {
   keystone,
   apps: [
     new Express(),
-    new StaticApp({ path: "/", src: "../kickfresh_app/web-build" }),
-    new GraphQLApp(),
+    new StaticApp({
+      path: "/",
+      src: "../kickfresh_app/web-build"
+    }),
+    new GraphQLApp({
+      apiPath: "/admin/api",
+      graphiqlPath: "/admin/graphiql"
+    }),
     new AdminUIApp({
-      /* authStrategy, */
-      enableDefaultRoute: true,
+      authStrategy,
+      enableDefaultRoute: true
       /* isAccessAllowed: ({ authentication: { item: user, listKey: list } }) =>
         !!user && !!user.isAdmin */
-    }),
-  ],
+    })
+  ]
 };
