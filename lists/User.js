@@ -3,7 +3,7 @@ const {
   Password,
   Checkbox,
   Select,
-  Relationship
+  Relationship,
 } = require("@keystonejs/fields");
 
 module.exports = {
@@ -24,16 +24,16 @@ module.exports = {
     username: {
       type: Text,
       isUnique: true,
-      isRequired: true
+      isRequired: true,
     },
     FName: {
-      type: Text
+      type: Text,
     },
     LName: {
-      type: Text
+      type: Text,
     },
     email: {
-      type: Text
+      type: Text,
       // 2. Only authenticated users can read/update their own email, not any other user's.
       // Admins can read/update anyone's email.
       /* access: ({ existingItem, authentication: { item } }) => {
@@ -42,7 +42,7 @@ module.exports = {
     },
     password: {
       type: Password,
-      isRequired: true
+      isRequired: true,
       /* access: {
         // 3. Only admins can see if a password is set. No-one can read their own or other user's passwords.
         read: ({ authentication }) => authentication.item.isAdmin,
@@ -54,19 +54,23 @@ module.exports = {
     },
     isAdmin: { type: Checkbox, defaultValue: false },
     Address: {
+      type: Relationship,
+      ref: "Address.User",
+      many: true,
+    },
+    defaultAddress: {
       type: Text,
-      many: true
     },
     state: {
       type: Select,
       options: ["active", "deactivated"],
-      defaultValue: "active"
+      defaultValue: "active",
     },
     Cart: {
       type: Relationship,
       many: true,
-      ref: "Cart.User"
-    }
+      ref: "Cart.User",
+    },
   },
-  labelField: "username"
+  labelField: "username",
 };

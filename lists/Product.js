@@ -4,47 +4,51 @@ module.exports = {
   fields: {
     ProductName: {
       type: Text,
-      isRequired: true
+      isRequired: true,
     },
     ProductID: {
       type: Text,
       isUnique: true,
-      isRequired: true
+      isRequired: true,
     },
     Category: {
       type: Text,
       //ref: "Category",
-      isRequired: true
+      isRequired: true,
     },
     SubCategory: {
       type: Text,
       //ref: "SubCategory",
-      isRequired: true
+      isRequired: true,
     },
     SubSubCategory: {
-      type: Text
+      type: Text,
     },
     Unit: {
       type: Text,
-      isRequired: true
+      isRequired: true,
     },
     Breakqty: {
       type: Text,
-      isRequired: true
+      isRequired: true,
     },
     Price: {
       type: Integer,
-      isRequired: true
+      isRequired: true,
+    },
+    MRP: {
+      type: Integer,
+      isRequired: true,
     },
     isTrending: {
       type: Integer,
-      isRequired: true
+      isRequired: true,
     },
     Vendors: {
       type: Relationship,
       ref: "Vendor.Products",
-      many: true
-    }
+      many: true,
+    },
   },
-  labelField: "ProductName"
+  labelField: "ProductName",
 };

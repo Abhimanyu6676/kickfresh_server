@@ -13,7 +13,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development DISABLE_LOGGING=true keystone dev",
     "_dev": "npx nodemon server",
-    "build": "cross-env NODE_ENV=production keystone build",
+    "build": "cross-env NODE_ENV=production DISABLE_LOGGING=true keystone build",
     "start": "cross-env NODE_ENV=production keystone start",
     "server_pro": "cross-env NODE_ENV=production DISABLE_LOGGING=true npx nodemon server.js",
     "server_dev": "cross-env NODE_ENV=development DISABLE_LOGGING=true npx nodemon server.js",

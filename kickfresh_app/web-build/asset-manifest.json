@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/static/js/app.4462a2af.chunk.js",
-    "app.js.map": "/static/js/app.4462a2af.chunk.js.map",
-    "runtime~app.js": "/static/js/runtime~app.b3244af7.js",
-    "runtime~app.js.map": "/static/js/runtime~app.b3244af7.js.map",
-    "static/js/2.790f6cb0.chunk.js": "/static/js/2.790f6cb0.chunk.js",
-    "static/js/2.790f6cb0.chunk.js.map": "/static/js/2.790f6cb0.chunk.js.map",
+    "app.js": "/static/js/app.3e872f25.chunk.js",
+    "app.js.map": "/static/js/app.3e872f25.chunk.js.map",
+    "runtime~app.js": "/static/js/runtime~app.a6639e49.js",
+    "runtime~app.js.map": "/static/js/runtime~app.a6639e49.js.map",
+    "static/js/2.e4a2e25d.chunk.js": "/static/js/2.e4a2e25d.chunk.js",
+    "static/js/2.e4a2e25d.chunk.js.map": "/static/js/2.e4a2e25d.chunk.js.map",
     "fonts/AntDesign.ttf": "/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/./fonts/Feather.ttf",
@@ -16,18 +16,26 @@
     "fonts/Ionicons.ttf": "/./fonts/Ionicons.ttf",
     "fonts/MaterialCommunityIcons.ttf": "/./fonts/MaterialCommunityIcons.ttf",
     "fonts/MaterialIcons.ttf": "/./fonts/MaterialIcons.ttf",
+    "fonts/Roboto-Medium.ttf": "/./fonts/Roboto-Medium.ttf",
     "fonts/SimpleLineIcons.ttf": "/./fonts/SimpleLineIcons.ttf",
+    "fonts/SpaceMono-Regular.ttf": "/./fonts/SpaceMono-Regular.ttf",
     "favicon-16.png": "/favicon-16.png",
     "favicon-32.png": "/favicon-32.png",
     "favicon.ico": "/favicon.ico",
     "index.html": "/index.html",
     "manifest.json": "/manifest.json",
     "serve.json": "/serve.json",
-    "static/media/empty-image.png": "/static/media/empty-image.a9702b66.png"
+    "service-worker.js.map": "/service-worker.js.map",
+    "static/media/_logo.png": "/static/media/_logo.4ed66c7d.png",
+    "static/media/city.jpg": "/static/media/city.c248be4b.jpg",
+    "static/media/empty-image.png": "/static/media/empty-image.a9702b66.png",
+    "static/media/loading_logo.png": "/static/media/loading_logo.b8513f19.png",
+    "workbox-76bb8387.js": "/workbox-76bb8387.js",
+    "workbox-76bb8387.js.map": "/workbox-76bb8387.js.map"
   },
   "entrypoints": [
-    "static/js/runtime~app.b3244af7.js",
-    "static/js/2.790f6cb0.chunk.js",
-    "static/js/app.4462a2af.chunk.js"
+    "static/js/runtime~app.a6639e49.js",
+    "static/js/2.e4a2e25d.chunk.js",
+    "static/js/app.3e872f25.chunk.js"
   ]
 }

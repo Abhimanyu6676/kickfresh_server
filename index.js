@@ -13,6 +13,8 @@ const LandmarkSchema = require("./lists/Landmark.js");
 const CategorySchema = require("./lists/Category.js");
 const SubCategorySchema = require("./lists/SubCategory.js");
 const SubSubCategorySchema = require("./lists/SubSubCategory.js");
+const AddressSchema = require("./lists/Address.js");
+const SubscribersListSchema = require("./lists/SubscribersList");
 //::Custom Express App
 const { Express } = require("./Express.js");
 
@@ -20,13 +22,13 @@ const { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
 
 const PROJECT_NAME = "Kickfresh_Server";
 const adapterConfig = {
-  mongoUri: "mongodb://localhost:27017/kickfresh"
+  mongoUri: "mongodb://localhost:27017/kickfresh",
 };
 
 const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(adapterConfig),
-  onConnect: async keystone => {
+  onConnect: async (keystone) => {
     let seed = false;
     {
       seed &&
@@ -36,27 +38,27 @@ const keystone = new Keystone({
             { Landmark: "LOGIX" },
             { Landmark: "ATS" },
             { Landmark: "LOTUS" },
-            { Landmark: "GAUR" }
+            { Landmark: "GAUR" },
           ],
           Area: [
             {
               AreaCode: 201501,
               Landmark: [
                 { where: { Landmark: "PARAS" } },
-                { where: { Landmark: "LOGIX" } }
-              ]
+                { where: { Landmark: "LOGIX" } },
+              ],
             },
             {
               AreaCode: 201502,
-              Landmark: [{ where: { Landmark: "ATS" } }]
+              Landmark: [{ where: { Landmark: "ATS" } }],
             },
             {
               AreaCode: 201503,
               Landmark: [
                 { where: { Landmark: "LOTUS" } },
-                { where: { Landmark: "GAUR" } }
-              ]
-            }
+                { where: { Landmark: "GAUR" } },
+              ],
+            },
           ],
           Vendor: [
             {
@@ -64,18 +66,18 @@ const keystone = new Keystone({
               VendorCode: 001,
               AreaCode: [
                 { where: { AreaCode: 201501 } },
-                { where: { AreaCode: 201502 } }
-              ]
+                { where: { AreaCode: 201502 } },
+              ],
             },
             {
               Name: "Shiva",
               VendorCode: 002,
-              AreaCode: [{ where: { AreaCode: 201503 } }]
-            }
-          ]
+              AreaCode: [{ where: { AreaCode: 201503 } }],
+            },
+          ],
         }));
     }
-  }
+  },
 });
 
 keystone.createList("Category", CategorySchema);
@@ -87,14 +89,16 @@ keystone.createList("Product", ProductSchema);
 keystone.createList("Vendor", VendorSchema);
 keystone.createList("User", UserSchema);
 keystone.createList("Cart", CartSchema);
+keystone.createList("Address", AddressSchema);
+keystone.createList("SubscribersList", SubscribersListSchema);
 
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
   list: "User",
   config: {
     identityField: "username", // default: 'email'
-    secretField: "password" // default: 'password'
-  }
+    secretField: "password", // default: 'password'
+  },
 });
 
 module.exports = {
@@ -103,17 +107,17 @@ module.exports = {
     new Express(),
     new StaticApp({
       path: "/",
-      src: "../kickfresh_app/web-build"
+      src: "../kickfresh_app/web-build",
     }),
     new GraphQLApp({
       apiPath: "/admin/api",
-      graphiqlPath: "/admin/graphiql"
+      graphiqlPath: "/admin/graphiql",
     }),
     new AdminUIApp({
-      authStrategy,
-      enableDefaultRoute: true
+      /* authStrategy, */
+      enableDefaultRoute: true,
       /* isAccessAllowed: ({ authentication: { item: user, listKey: list } }) =>
         !!user && !!user.isAdmin */
-    })
-  ]
+    }),
+  ],
 };
