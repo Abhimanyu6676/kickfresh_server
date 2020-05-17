@@ -3,6 +3,8 @@ const { GraphQLApp } = require("@keystonejs/app-graphql");
 const { AdminUIApp } = require("@keystonejs/app-admin-ui");
 const { StaticApp } = require("@keystonejs/app-static");
 const { PasswordAuthStrategy } = require("@keystonejs/auth-password");
+const expressSession = require("express-session");
+const MongoStore = require("connect-mongo")(expressSession);
 //::Lists
 const ProductSchema = require("./lists/Product.js");
 const UserSchema = require("./lists/User.js");
@@ -28,6 +30,9 @@ const adapterConfig = {
 const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(adapterConfig),
+  sessionStore: new MongoStore({
+    url: "mongodb://localhost:27017/kickfresh_session",
+  }),
   onConnect: async (keystone) => {
     let seed = false;
     {
@@ -103,15 +108,18 @@ const authStrategy = keystone.createAuthStrategy({
 
 module.exports = {
   keystone,
+  configureExpress: (app) => {
+    app.set("trust proxy", true);
+  },
   apps: [
     new Express(),
-    new StaticApp({
-      path: "/store",
-      src: "../kickfresh_app/web-build",
-    }),
     new GraphQLApp({
       apiPath: "/admin/api",
       graphiqlPath: "/admin/graphiql",
+    }),
+    new StaticApp({
+      path: "/",
+      src: "../kickfresh_app/web-build",
     }),
     new AdminUIApp({
       /* authStrategy, */

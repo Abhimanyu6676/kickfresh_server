@@ -17,6 +17,7 @@ class Express {
     app.use(cookieParser());
     app.use("/user", user);
     app.use("/add", dataSet);
+    //app.use("/", express.static("./app/web-build"));
 
     app.get(
       "/test",
