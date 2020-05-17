@@ -104,11 +104,11 @@ const authStrategy = keystone.createAuthStrategy({
 module.exports = {
   keystone,
   apps: [
+    new Express(),
     new StaticApp({
-      path: "/",
+      path: "/store",
       src: "../kickfresh_app/web-build",
     }),
-    new Express(),
     new GraphQLApp({
       apiPath: "/admin/api",
       graphiqlPath: "/admin/graphiql",
