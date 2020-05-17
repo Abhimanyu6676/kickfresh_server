@@ -117,10 +117,10 @@ module.exports = {
       apiPath: "/admin/api",
       graphiqlPath: "/admin/graphiql",
     }),
-    new StaticApp({
+    /*  new StaticApp({
       path: "/",
       src: "../kickfresh_app/web-build",
-    }),
+    }), */
     new AdminUIApp({
       /* authStrategy, */
       enableDefaultRoute: true,
