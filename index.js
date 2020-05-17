@@ -105,10 +105,6 @@ module.exports = {
   keystone,
   apps: [
     new Express(),
-    new StaticApp({
-      path: "/",
-      src: "../kickfresh_app/web-build",
-    }),
     new GraphQLApp({
       apiPath: "/admin/api",
       graphiqlPath: "/admin/graphiql",
@@ -118,6 +114,10 @@ module.exports = {
       enableDefaultRoute: true,
       /* isAccessAllowed: ({ authentication: { item: user, listKey: list } }) =>
         !!user && !!user.isAdmin */
+    }),
+    new StaticApp({
+      path: "/",
+      src: "../kickfresh_app/web-build",
     }),
   ],
 };
