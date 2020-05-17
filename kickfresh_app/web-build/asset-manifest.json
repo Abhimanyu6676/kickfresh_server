@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/static/js/app.0c27a9e2.chunk.js",
-    "app.js.map": "/static/js/app.0c27a9e2.chunk.js.map",
+    "app.js": "/static/js/app.ab400d4d.chunk.js",
+    "app.js.map": "/static/js/app.ab400d4d.chunk.js.map",
     "runtime~app.js": "/static/js/runtime~app.a6639e49.js",
     "runtime~app.js.map": "/static/js/runtime~app.a6639e49.js.map",
-    "static/js/2.9f6faad6.chunk.js": "/static/js/2.9f6faad6.chunk.js",
-    "static/js/2.9f6faad6.chunk.js.map": "/static/js/2.9f6faad6.chunk.js.map",
+    "static/js/2.d4cffe98.chunk.js": "/static/js/2.d4cffe98.chunk.js",
+    "static/js/2.d4cffe98.chunk.js.map": "/static/js/2.d4cffe98.chunk.js.map",
     "fonts/AntDesign.ttf": "/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/./fonts/Feather.ttf",
@@ -30,13 +30,12 @@
     "static/media/empty-image.png": "/static/media/empty-image.a9702b66.png",
     "static/media/loading.gif": "/static/media/loading.baeaf0c7.gif",
     "static/media/loading_logo.png": "/static/media/loading_logo.b8513f19.png",
-    "static/media/logo1.png": "/static/media/logo1.ee4985b6.png",
     "workbox-76bb8387.js": "/workbox-76bb8387.js",
     "workbox-76bb8387.js.map": "/workbox-76bb8387.js.map"
   },
   "entrypoints": [
     "static/js/runtime~app.a6639e49.js",
-    "static/js/2.9f6faad6.chunk.js",
-    "static/js/app.0c27a9e2.chunk.js"
+    "static/js/2.d4cffe98.chunk.js",
+    "static/js/app.ab400d4d.chunk.js"
   ]
 }
