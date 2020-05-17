@@ -104,6 +104,10 @@ const authStrategy = keystone.createAuthStrategy({
 module.exports = {
   keystone,
   apps: [
+    new StaticApp({
+      path: "/",
+      src: "../kickfresh_app/web-build",
+    }),
     new Express(),
     new GraphQLApp({
       apiPath: "/admin/api",
@@ -114,10 +118,6 @@ module.exports = {
       enableDefaultRoute: true,
       /* isAccessAllowed: ({ authentication: { item: user, listKey: list } }) =>
         !!user && !!user.isAdmin */
-    }),
-    new StaticApp({
-      path: "/",
-      src: "../kickfresh_app/web-build",
     }),
   ],
 };
