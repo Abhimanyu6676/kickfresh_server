@@ -12,12 +12,12 @@ const ACCESS_WEB_TOKEN =
 
 class Express {
   prepareMiddleware({ keystone, dev, distDir }) {
+    app.set("base", "backend");
     app.set("keystone", keystone);
     app.use(express.json());
     app.use(cookieParser());
-    app.use("/user", user);
-    app.use("/add", dataSet);
-    //app.use("/", express.static("./app/web-build"));
+    app.use("/backend/user", user);
+    app.use("/backend/add", dataSet);
 
     app.get(
       "/test",

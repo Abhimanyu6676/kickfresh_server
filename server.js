@@ -10,8 +10,6 @@ keystone
     await keystone.connect();
     const app = express();
 
-    //app.use("/", express.static("./kickfresh_app/web-build"));
-
     /* app.use("/test", function(req, res) {
       res.send("Hello World");
     }); */

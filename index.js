@@ -114,14 +114,15 @@ module.exports = {
   apps: [
     new Express(),
     new GraphQLApp({
-      apiPath: "/admin/api",
-      graphiqlPath: "/admin/graphiql",
+      apiPath: "/backend/admin/api",
+      graphiqlPath: "/backend/admin/graphiql",
     }),
-    new StaticApp({
-      path: "/",
-      src: "../kickfresh_app/web-build",
-    }),
+    /*  new StaticApp({
+       path: "/",
+       src: "../kickfresh_app/web-build",
+     }), */
     new AdminUIApp({
+      adminPath: "/backend/admin",
       /* authStrategy, */
       enableDefaultRoute: true,
       /* isAccessAllowed: ({ authentication: { item: user, listKey: list } }) =>
