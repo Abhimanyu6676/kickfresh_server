@@ -12,6 +12,14 @@ const ACCESS_WEB_TOKEN =
 
 class Express {
   prepareMiddleware({ keystone, dev, distDir }) {
+    //http redirect--TODO: shift redirect job to nginx
+    /*  app.use(function(req, res, next) {
+      if (req.protocol === "http") {
+        console.log("redirect http");
+        res.redirect(301, `https://${req.headers.host}${req.url}`);
+        next();
+      }
+    }); */
     app.set("base", "backend");
     app.set("keystone", keystone);
     app.use(express.json());
@@ -27,6 +35,7 @@ class Express {
           expiresIn: "10m",
         });
         console.log("user: ", req.cookies);
+        console.log("------------" + "/test");
         console.log(ACCESS_TOKEN);
         req.token = ACCESS_TOKEN;
         res.cookie("co", ACCESS_TOKEN).json({ Token: ACCESS_TOKEN });

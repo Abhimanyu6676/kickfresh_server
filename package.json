@@ -17,6 +17,9 @@
     "start": "cross-env NODE_ENV=production keystone start",
     "server_pro": "cross-env NODE_ENV=production DISABLE_LOGGING=true npx nodemon server.js",
     "server_dev": "cross-env NODE_ENV=development DISABLE_LOGGING=true npx nodemon server.js",
+    "pm2_start": "cross-env NODE_ENV=production DISABLE_LOGGING=TRUE pm2 start server.js",
+    "pm2_start_batch": "cross-env NODE_ENV=production DISABLE_LOGGING=TRUE pm2 start server.js -i max",
+    "pm2_stop": "pm2 stop server && pm2 delete server",
     "create-tables": "keystone create-tables"
   },
   "dependencies": {
