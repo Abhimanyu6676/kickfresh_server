@@ -1,7 +1,7 @@
 //:: Imports
 var express = require("express");
 var router = express.Router();
-const Razorpay = require("Razorpay");
+const Razorpay = require("razorpay");
 
 // Razorpay Instance
 const rzp = new Razorpay({
