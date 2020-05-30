@@ -7,7 +7,6 @@ module.exports = {
       defaultValue: false,
     },
     addLine1: {
-      //house number and street
       type: Text,
       isRequired: true,
     },
@@ -19,16 +18,21 @@ module.exports = {
       type: Text,
       isRequired: true,
     },
+    /* city: {
+      type: Text,
+      isRequired: true,
+    }, */
     city: {
-      type: Text,
+      type: Relationship,
+      ref: "Location.address",
       isRequired: true,
     },
-    state: {
+    /*  region: {
+      type: Relationship,
+      ref: "Region",
+    },  */
+    region: {
       type: Text,
-      isRequired: true,
-    },
-    Pincode: {
-      type: Integer,
     },
     User: {
       type: Relationship,

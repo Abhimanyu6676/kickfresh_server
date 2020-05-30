@@ -2,25 +2,30 @@ const { Text, Integer, Relationship } = require("@keystonejs/fields");
 
 module.exports = {
   fields: {
-    Name: {
+    name: {
       type: Text,
-      isRequired: true
+      isRequired: true,
     },
-    VendorCode: {
+    vendorCode: {
       type: Integer,
       isUnique: true,
-      isRequired: true
+      isRequired: true,
     },
     AreaCode: {
       type: Relationship,
       ref: "Area.Vendors",
-      many: true
+      many: true,
     },
     Products: {
       type: Relationship,
       ref: "Product.Vendors",
-      many: true
-    }
+      many: true,
+    },
+    allotedProducts: {
+      type: Relationship,
+      ref: "cartProduct.allotedVendor",
+      many: true,
+    },
   },
-  labelField: "VendorCode"
+  labelField: "VendorCode",
 };

@@ -66,10 +66,10 @@ module.exports = {
       options: ["active", "deactivated"],
       defaultValue: "active",
     },
-    Cart: {
+    cart: {
       type: Relationship,
       many: true,
-      ref: "Cart.User",
+      ref: "Cart.user",
     },
   },
   labelField: "username",

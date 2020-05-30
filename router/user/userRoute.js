@@ -45,9 +45,9 @@ router.post("/signin", (req, res) => {
         pass: req.body.body.pass,
       },
     })
-    .then((res) => {
-      console.log("res" + JSON.stringify(res));
-      res.send(Success + "--" + res);
+    .then((response) => {
+      console.log("res" + JSON.stringify(response));
+      res.send(Success + "--" + response);
     })
     .catch((err) => {
       console.log("err" + JSON.stringify(err));

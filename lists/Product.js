@@ -29,7 +29,7 @@ module.exports = {
       isRequired: true,
     },
     Breakqty: {
-      type: Text,
+      type: Integer,
       isRequired: true,
     },
     Price: {

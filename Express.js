@@ -1,10 +1,16 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
+var bodyParser = require("body-parser");
+var multer = require("multer");
+var upload = multer();
 xlsxj = require("xlsx-to-json");
 Data = require("./constants/DummyProductList");
 var cookieParser = require("cookie-parser");
-var user = require("./router/user/userRoute");
-var dataSet = require("./router/dataSet/dataSet.router");
+const user = require("./router/user/userRoute");
+const dataSet = require("./router/dataSet/dataSet.router");
+const cartRoute = require("./router/cart/cartRoute");
+const PaymentRoute = require("./router/payment/Payment.route");
+
 const app = express();
 
 const ACCESS_WEB_TOKEN =
@@ -12,20 +18,19 @@ const ACCESS_WEB_TOKEN =
 
 class Express {
   prepareMiddleware({ keystone, dev, distDir }) {
-    //http redirect--TODO: shift redirect job to nginx
-    /*  app.use(function(req, res, next) {
-      if (req.protocol === "http") {
-        console.log("redirect http");
-        res.redirect(301, `https://${req.headers.host}${req.url}`);
-        next();
-      }
-    }); */
     app.set("base", "backend");
     app.set("keystone", keystone);
+    app.set("views", __dirname + "/views");
+    app.set("view engine", "ejs");
     app.use(express.json());
     app.use(cookieParser());
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(upload.array());
     app.use("/backend/user", user);
+    app.use("/backend/cart", cartRoute);
     app.use("/backend/add", dataSet);
+    app.use("/backend/payment", PaymentRoute);
 
     app.get(
       "/test",
@@ -34,11 +39,8 @@ class Express {
         const ACCESS_TOKEN = jwt.sign(user, ACCESS_WEB_TOKEN, {
           expiresIn: "10m",
         });
-        console.log("user: ", req.cookies);
-        console.log("------------" + "/test");
-        console.log(ACCESS_TOKEN);
-        req.token = ACCESS_TOKEN;
-        res.cookie("co", ACCESS_TOKEN).json({ Token: ACCESS_TOKEN });
+        console.log("------------" + req.query.linkingUri + "test=ABCD");
+        res.send("test");
       }
     );
 

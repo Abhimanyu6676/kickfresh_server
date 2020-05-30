@@ -2,21 +2,22 @@ const { Text, Integer, Relationship } = require("@keystonejs/fields");
 
 module.exports = {
   fields: {
-    AreaCode: {
-      type: Integer,
-      isRequired: true,
-      isUnique: true,
-    },
     Region: {
-      type: Relationship,
-      ref: "Region",
-      many: true,
+      type: Text,
+      isRequired: true,
     },
-    Vendors: {
+    Location: {
       type: Relationship,
-      ref: "Vendor.AreaCode",
+      ref: "Location.Region",
+    },
+    Pincode: {
+      type: Integer,
+    },
+    Landmark: {
+      type: Relationship,
+      ref: "Landmark",
       many: true,
     },
   },
-  labelField: "AreaCode",
+  labelField: "Region",
 };

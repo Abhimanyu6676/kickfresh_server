@@ -16,9 +16,24 @@ const CategorySchema = require("./lists/Category.js");
 const SubCategorySchema = require("./lists/SubCategory.js");
 const SubSubCategorySchema = require("./lists/SubSubCategory.js");
 const AddressSchema = require("./lists/Address.js");
-const SubscribersListSchema = require("./lists/SubscribersList");
-//::Custom Express App
+const SubscribersListSchema = require("./lists/SubscribersList.js");
+const CartProductSchema = require("./lists/CartProduct.js");
+const RegionSchema = require("./lists/Region.js");
+const LocationSchema = require("./lists/Location.js");
+
+//::Custom Imports
 const { Express } = require("./Express.js");
+const {
+  cartResolver,
+  cartResolverOutput,
+  cartResolverInput,
+  cartResolverProduct,
+} = require("./services/resolver/cartResolver");
+const {
+  multipleProductResolver,
+  multipleProductResolverOutput,
+  multipleProductResolverInput,
+} = require("./services/resolver/multipleProductResolver");
 
 const { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
 
@@ -96,6 +111,42 @@ keystone.createList("User", UserSchema);
 keystone.createList("Cart", CartSchema);
 keystone.createList("Address", AddressSchema);
 keystone.createList("SubscribersList", SubscribersListSchema);
+keystone.createList("cartProduct", CartProductSchema);
+keystone.createList("Region", RegionSchema);
+keystone.createList("Location", LocationSchema);
+
+keystone.extendGraphQLSchema({
+  types: [
+    {
+      type: multipleProductResolverInput,
+    },
+    {
+      type: multipleProductResolverOutput,
+    },
+    {
+      type: cartResolverOutput,
+    },
+    {
+      type: cartResolverInput,
+    },
+    {
+      type: cartResolverProduct,
+    },
+  ],
+  mutations: [],
+  queries: [
+    {
+      schema:
+        "multipleProduct(products:[multipleProductResolverInput!]!):multipleProductResolverOutput",
+      resolver: multipleProductResolver,
+    },
+    {
+      schema:
+        "cartResolver(products:[cartResolverInput!]!, userID:ID!, addID:ID!): cartResolverOutput",
+      resolver: cartResolver,
+    },
+  ],
+});
 
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
@@ -123,6 +174,8 @@ module.exports = {
      }), */
     new AdminUIApp({
       adminPath: "/backend/admin",
+      apiPath: "/backend/admin/api",
+      graphiqlPath: "/backend/admin/graphiql",
       /* authStrategy, */
       enableDefaultRoute: true,
       /* isAccessAllowed: ({ authentication: { item: user, listKey: list } }) =>

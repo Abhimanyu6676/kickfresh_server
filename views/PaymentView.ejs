@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <h1>This is a Heading</h1>
+    <p><%= message %></p>
+    <form action="http://192.168.1.6:3000/backend/payment/success" method="POST">
+      <script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        data-key="rzp_test_MILeyvCy8PQGU4"
+        data-amount=<%= payment %>
+        data-currency="INR"
+        data-order_id=<%= orderID %>
+        data-buttontext="Pay with Razorpay"
+        data-name="Freshkick"
+        data-description="Test transaction"
+        data-image="https://freshkick.in/Images/LogoImages/ogImage.png"
+        data-prefill.name="Gaurav Kumar"
+        data-prefill.email="gaurav.kumar@example.com"
+        data-prefill.contact="9999999999"
+        data-theme.color="#26c165"
+      ></script>
+      <input type="hidden" custom="Hidden Element" name="hidden" />
+      <input type="hidden" custom="Hidden Element" redirectUri=<%= redirectUri %> />
+    </form>
+  </body>
+</html>
